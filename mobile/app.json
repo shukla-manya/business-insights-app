@@ -30,7 +30,7 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "apiUrl": "https://your-service.onrender.com"
+      "apiUrl": "https://business-insights-app-umcr.onrender.com"
     }
   }
 }
