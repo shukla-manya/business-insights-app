@@ -1,0 +1,126 @@
+# --- Dependencies ---
+node_modules/
+
+# --- Environment & secrets (keep *.example for docs) ---
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.p8
+*.p12
+*.key
+secrets.json
+
+# --- Logs & diagnostics ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# --- Runtime / caches ---
+.cache/
+.parcel-cache/
+.turbo/
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache/
+
+# --- Test & coverage ---
+coverage/
+.nyc_output/
+*.lcov
+
+# --- Build outputs ---
+dist/
+build/
+out/
+web-build/
+
+# --- OS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Editors & IDEs ---
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.cursor/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# --- Backend (Node / Express) ---
+backend/node_modules/
+
+# --- Mobile: Expo / React Native ---
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+mobile/expo-env.d.ts
+.metro-health-check*
+
+# Prebuild native projects (regenerate with `npx expo prebuild`)
+mobile/android/
+mobile/ios/
+
+# Kotlin / Gradle (if present under mobile)
+mobile/**/.kotlin/
+mobile/**/.gradle/
+mobile/**/local.properties
+mobile/**/*.hprof
+
+# --- Android release artifacts (do not commit keystores or store binaries) ---
+*.apk
+*.aab
+*.ap_
+*.dex
+*.jks
+*.keystore
+
+# --- iOS (if you ever add / commit ios locally) ---
+**/Pods/
+**/*.xcworkspace/xcuserdata/
+**/*.xcodeproj/xcuserdata/
+**/*.xcodeproj/project.xcworkspace/xcuserdata/
+*.mobileprovision
+*.orig.*
+
+# --- EAS ---
+.eas/
+
+# --- MongoDB / local data ---
+*.mongodb
+dump/
+
+# --- Misc ---
+*.local
+tmp/
+temp/
+*.tmp
+.vercel

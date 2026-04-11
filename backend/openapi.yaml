@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: Business Insights API
+  description: |
+    REST API for business insights, reviews, and authentication.
+
+    Made with love by Manya Shukla · 2026 · 8005586588
+  version: 1.0.0
+  contact:
+    name: Manya Shukla
+
+servers:
+  - url: http://localhost:4000
+    description: Local development
+  - url: "{baseUrl}"
+    description: Configurable base URL
+    variables:
+      baseUrl:
+        default: http://localhost:4000
+
+paths:
+  /:
+    get:
+      summary: API attribution
+      description: Credits and contact for this API.
+      operationId: getRoot
+      tags:
+        - Meta
+      responses:
+        "200":
+          description: Attribution payload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RootResponse"
+
+  /health:
+    get:
+      summary: Health check
+      operationId: getHealth
+      tags:
+        - Meta
+      responses:
+        "200":
+          description: API running and MongoDB connected
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+        "503":
+          description: MongoDB not connected
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /login:
+    post:
+      summary: Log in
+      operationId: postLogin
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: JWT issued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginSuccess"
+        "400":
+          description: Missing email or password
+        "401":
+          description: Invalid credentials
+
+  /business:
+    get:
+      summary: Get business profile
+      operationId: getBusiness
+      tags:
+        - Business
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Business document
+        "401":
+          description: Unauthorized
+        "404":
+          description: Business not found
+
+  /insights:
+    get:
+      summary: Get insights
+      operationId: getInsights
+      tags:
+        - Insights
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Insights document
+        "401":
+          description: Unauthorized
+        "404":
+          description: Insights not found
+
+  /reviews:
+    get:
+      summary: List reviews
+      operationId: getReviews
+      tags:
+        - Reviews
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Review list
+        "401":
+          description: Unauthorized
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    RootResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Made with love by Manya Shukla
+            year:
+              type: integer
+              example: 2026
+            contact:
+              type: string
+              example: "8005586588"
+
+    HealthResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            ok:
+              type: boolean
+            api:
+              type: string
+              example: running
+            mongodb:
+              type: string
+              enum: [connected, disconnected]
+
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+
+    LoginSuccess:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            token:
+              type: string
+            user:
+              type: object
+              properties:
+                email:
+                  type: string
+
+tags:
+  - name: Meta
+    description: Service metadata and health
+  - name: Auth
+    description: Authentication
+  - name: Business
+    description: Business profile
+  - name: Insights
+    description: Business insights
+  - name: Reviews
+    description: Customer reviews

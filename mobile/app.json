@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Business Insights",
+    "slug": "business-insights",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0c1222"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.businessinsights.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0c1222"
+      },
+      "package": "com.businessinsights.app",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "usesCleartextTraffic": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "apiUrl": "https://your-service.onrender.com"
+    }
+  }
+}
