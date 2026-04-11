@@ -30,7 +30,10 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "apiUrl": "https://business-insights-app-umcr.onrender.com"
+      "apiUrl": "https://business-insights-app-umcr.onrender.com",
+      "eas": {
+        "projectId": "a7a3560e-b67d-4fbb-aa08-7e1c5b6ab989"
+      }
     }
   }
 }
