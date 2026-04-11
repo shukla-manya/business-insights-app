@@ -12,6 +12,7 @@ const insightsRouter = require("./routes/insights");
 const reviewsRouter = require("./routes/reviews");
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(
   cors({
     origin: (requestOrigin, callback) => {
@@ -23,12 +24,14 @@ app.use(
 app.use(express.json());
 
 app.get("/", (req, res) => {
+  const base = `${req.protocol}://${req.get("host")}`;
   res.json({
     success: true,
     data: {
       message: "Made with love by Manya Shukla",
       year: 2026,
       contact: "8005586588",
+      docs: `${base}/api-docs`,
     },
   });
 });
