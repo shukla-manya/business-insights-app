@@ -5,7 +5,6 @@ const User = require("../models/User");
 const Business = require("../models/Business");
 const Insights = require("../models/Insights");
 const Review = require("../models/Review");
-
 const uri = process.env.MONGODB_URI;
 if (!uri) {
   console.error("Set MONGODB_URI in backend/.env");
