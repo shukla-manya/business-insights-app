@@ -1,5 +1,4 @@
 import Constants from "expo-constants";
-
 export function getApiBase(): string {
   const envUrl = process.env.EXPO_PUBLIC_API_URL;
   if (typeof envUrl === "string" && envUrl.trim().length > 0) {
